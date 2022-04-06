@@ -25,7 +25,7 @@ export class AuthenticateUserUseCase {
       throw new AppError('Usuário ou senha incorretos')
     }
 
-    const token = sign({}, "1cc19f80190295f1af7c6a36543bc8e5", {
+    const token = sign({}, '1cc19f80190295f1af7c6a36543bc8e5', {
       expiresIn: '1d',
       subject: verifyUser.id
     })
