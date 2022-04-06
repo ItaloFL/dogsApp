@@ -20,7 +20,9 @@ export async function ensureAuthenticateUser(request: Request, response: Respons
 
     const { id } = data as TokenPayLoad;
 
-    request.userId = id
+    request.user = {
+      id
+    }
 
     next()
   } catch {
