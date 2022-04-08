@@ -1,43 +1,51 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../../context/UserContext'
 import { useForm } from '../../../hooks/useForm'
-import { GET_USER, LOGIN_USER } from '../../../services/api'
 import { StyledButton } from '../../Button/style'
+import { Error } from '../../Helper'
 import { Input } from '../../Input'
+import { CadastroWrapper, FormWrapper } from './style'
 
 export const LoginForm = () => {
   const email = useForm('email')
   const password = useForm()
 
-  async function getUser(token: string) {
-    const { url, options } = GET_USER(token);
-    const response = await fetch(url, options);
-    const json = await response.json()
-  }
+  const { userLogin, error, loading } = useContext(UserContext)
 
   async function handleSubmit(event: any) {
     event.preventDefault()
 
     if (email.validate() && password.validate()) {
-      const { url, options } = LOGIN_USER({
-        email: email.value,
-        password: password.value
-      })
-      
-      const response = await fetch(url, options)
-      const json = await response.json();
-      localStorage.setItem('token', json.token)
+      userLogin(email.value, password.value)
     }
   }
 
   return (
-    <section>
-      <h1>Login</h1>
-      <form action="" onSubmit={handleSubmit}>
+    <section className="animeLeft">
+      <h1 className="title">Login</h1>
+      <FormWrapper action="" onSubmit={handleSubmit}>
         <Input label="Email" type="email" name="email" {...email} />
         <Input label="Senha" type="password" name="password" {...password} />
-        <StyledButton>Entrar</StyledButton>
-      </form>
-      <Link to="/login/create">Cadastro</Link>
+        {loading ? (
+          <StyledButton disabled>Carregando...</StyledButton>
+        ) : (
+          <StyledButton>Entrar</StyledButton>
+        )}
+        <Error error={error} />
+      </FormWrapper>
+      <Link className="forgot" to="/login/forgot">
+        Perdeu a senha?
+      </Link>
+      <CadastroWrapper>
+        <h2 className="subtitle">Cadastre-se</h2>
+        <p>Ainda não possui conta? Castre-se no site</p>
+        <StyledButton>
+          <Link className="button-create" to="/login/create">
+            Cadastro
+          </Link>
+        </StyledButton>
+      </CadastroWrapper>
     </section>
   )
 }
