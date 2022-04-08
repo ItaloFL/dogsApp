@@ -24,3 +24,16 @@ export function GET_USER(token: string){
     }
   }
 }
+
+export function USER_CREATE(body: object){
+  return {
+    url: baseURL + '/user',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify(body)
+    }
+  }
+}

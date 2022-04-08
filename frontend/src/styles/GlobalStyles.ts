@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
-
   * {
     box-sizing: border-box;
   }
@@ -51,10 +50,61 @@ export default createGlobalStyle`
     color: inherit;
   }
 
+  .title {
+    font-family: var(--type-second);
+    line-height: 1;
+    font-size: 3rem;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #fb1;
+      position: absolute;
+      bottom: 5px;
+      left: -5px;
+      border-radius: .2rem;
+      z-index: -1;
+    }
+  }
 
   .container {
     max-width: 60rem;
     padding: 0 1rem;
     margin: 0 auto;
   }
+
+  .forgot {
+    display: inline-block;
+    color: #666;
+    padding: .5rem 0;
+    line-height: 1;
+  }
+
+  .forgot::after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    display: block;
+  }
+
+  .animeLeft {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: animeLeft 0.3s forwards;
+  }
+
+
+  @keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+  
 `

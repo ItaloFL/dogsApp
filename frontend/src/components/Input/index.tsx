@@ -18,7 +18,6 @@ export const Input = ({ label, type, name, value, onChange, error, onBlur }: Pro
       <label className="form-label" htmlFor={name}>{label}</label>
       <input className="form-input" id={name} name={name} value={value} onChange={onChange} onBlur={onBlur}/>
       {error && <p className="error-message">{error}</p>}
-      
     </InputWrapper>
   )
 }
