@@ -23,7 +23,7 @@ export const LoginCreate = () => {
       password: password.value
     })
     const { response } = await request(url, options)
-    if(response.ok) userLogin(email.value, password.value);
+    if(response.ok) await userLogin(email.value, password.value);
   }
 
   return (

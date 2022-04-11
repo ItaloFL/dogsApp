@@ -17,7 +17,7 @@ export const LoginForm = () => {
     event.preventDefault()
 
     if (email.validate() && password.validate()) {
-      userLogin(email.value, password.value)
+      await userLogin(email.value, password.value);
     }
   }
 
