@@ -5,7 +5,7 @@ import { UserContext } from '../../context/UserContext'
 import { HeaderWrapper, NavigateWrapper } from './style'
 
 export const Header = () => {
-  const { data, userLogout } = useContext(UserContext)
+  const { data } = useContext(UserContext)
   return (
     <HeaderWrapper>
       <NavigateWrapper className="container">
@@ -13,12 +13,11 @@ export const Header = () => {
           <img className="logo" src={Dogs} alt="Icone Dogs" />
         </Link>
         {data ? (
-          <Link className="login" to="/conta">
+          <Link className="login" to="conta">
             {data.name}
-            <button onClick={userLogout}>Sair</button>
           </Link>
         ) : (
-          <Link className="login" to="/login">
+          <Link className="login" to="login">
             Login / Criar
           </Link>
         )}

@@ -5,11 +5,11 @@ type PropsInput = {
   label: string
   type: string
   name: string
-  value: string
-  onChange: ChangeEventHandler
-  validate: () => boolean;
-  onBlur: () => boolean;
-  error: string | null;
+  value?: string
+  onChange?: ChangeEventHandler
+  validate?: () => boolean;
+  onBlur?: () => boolean;
+  error?: string | null;
 }
 
 export const Input = ({ label, type, name, value, onChange, error, onBlur }: PropsInput) => {
