@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   createContext,
   useState,
@@ -41,14 +42,16 @@ export const UserStorage: FC = ({ children }) => {
           setLoading(true)
           await getUser(token)
         } catch (error) {
-          userLogout()
+          await userLogout()
         } finally {
           setLoading(false)
         }
+      } else {
+        setLogin(false)
       }
     }
     autoLogin()
-  }, [userLogout])
+  }, [])
 
   async function getUser(token: string) {
     const { url, options } = GET_USER(token)
@@ -60,20 +63,20 @@ export const UserStorage: FC = ({ children }) => {
 
   async function userLogin(email: string, password: string) {
     try {
-      setError(null);
-      setLoading(true);
+      setError(null)
+      setLoading(true)
       const { url, options } = LOGIN_USER({ email, password })
       const tokenResponse = await fetch(url, options)
-      if(!tokenResponse.ok) throw new Error(`Error: Usuário ou senha incorretos`)
+      if (!tokenResponse.ok)
+        throw new Error(`Error: Usuário ou senha incorretos`)
       const { token } = await tokenResponse.json()
       localStorage.setItem('token', token)
       await getUser(token)
       navigate('/conta')
     } catch (error: any) {
-      setError(error.message);
-      setLogin(false);
-    }
-    finally {
+      setError(error.message)
+      setLogin(false)
+    } finally {
       setLoading(false)
     }
   }
@@ -88,7 +91,9 @@ export const UserStorage: FC = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ userLogin, getUser, userLogout, data, login, loading, error }}>
+    <UserContext.Provider
+      value={{ userLogin, getUser, userLogout, data, login, loading, error }}
+    >
       {children}
     </UserContext.Provider>
   )
