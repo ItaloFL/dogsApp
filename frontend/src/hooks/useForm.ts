@@ -12,9 +12,13 @@ type IValidations = {
 const validations: IValidations = {
   email: {
     regex:
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
     message: 'Preencha um email válido'
-  }
+  },
+  // number: {
+  //   regex: /^\d+$/,
+  //   message: 'Ultilize apenas Números.'
+  // }
 }
 
 export const useForm = (type?: string | false) => {
