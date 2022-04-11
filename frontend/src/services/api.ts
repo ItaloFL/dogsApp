@@ -1,7 +1,6 @@
+const baseURL = 'http://localhost:3333'
 
-const baseURL = 'http://localhost:3333';
-
-export function LOGIN_USER(body: object){
+export function LOGIN_USER(body: object) {
   return {
     url: baseURL + '/login',
     options: {
@@ -14,10 +13,11 @@ export function LOGIN_USER(body: object){
   }
 }
 
-export function GET_USER(token: string){
+export function GET_USER(token: string) {
   return {
     url: baseURL + '/user',
     options: {
+      method: 'GET',
       headers: {
         Authorization: 'Bearer ' + token
       }
@@ -25,7 +25,7 @@ export function GET_USER(token: string){
   }
 }
 
-export function USER_CREATE(body: object){
+export function USER_CREATE(body: object) {
   return {
     url: baseURL + '/user',
     options: {
@@ -34,6 +34,19 @@ export function USER_CREATE(body: object){
         'Content-Type': 'Application/json'
       },
       body: JSON.stringify(body)
+    }
+  }
+}
+
+export function PHOTO_POST(formData: FormData, token: string) {
+  return {
+    url: baseURL + '/createPost',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token
+      },
+      body: formData
     }
   }
 }
