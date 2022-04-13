@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
-export const useFetch = () => {
-  const [data, setData] = useState(null)
+export const useFetch = ( dataType?: any) => {
+  const [data, setData] = useState(dataType)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   let response: Response;
