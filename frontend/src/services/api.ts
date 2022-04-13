@@ -50,3 +50,24 @@ export function PHOTO_POST(formData: FormData, token: string) {
     }
   }
 }
+
+export function PHOTOS_GET() {
+  return {
+    url: baseURL + '/post',
+    options: {
+      method: 'GET',
+      cache: 'no-store',
+    }
+  }
+}
+
+export function PHOTO_GET(id: string) {
+  return {
+    url: baseURL + `/photo/${id}`,
+    options: {
+      method: 'GET',
+      cache: 'no-store',
+    }
+  }
+}
+
