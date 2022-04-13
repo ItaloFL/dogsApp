@@ -1,8 +1,11 @@
+import { Feed } from "../Feed"
 
 
 
 export const Home = () => {
   return (
-    <div>Home</div>
+    <section className="container mainContainer">
+      <Feed/>
+    </section>
   )
 }

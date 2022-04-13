@@ -78,6 +78,10 @@ export default createGlobalStyle`
     margin: 0 auto;
   }
 
+  .mainContainer {
+    margin-top: 4rem;
+  }
+
   .forgot {
     display: inline-block;
     color: #666;
