@@ -9,7 +9,7 @@ export class GetPhotoPostUseCase {
     const postImage = client.post.findFirst({
       where: {
         id
-      }
+      },
     })
 
     return postImage
