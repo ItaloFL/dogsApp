@@ -5,17 +5,19 @@ type PostRequest = {
   peso: string
   idade: string
   image?: string
+  author: string
 }
 
 export class CreatePostUseCase {
-  async execute({ name, peso, idade, image }: PostRequest) {
+  async execute({ name, peso, idade, image, author }: PostRequest) {
 
     const post = await client.post.create({
       data: {
         name,
-        peso,
-        idade, 
-        image
+        peso, 
+        idade,
+        image,
+        author
       }
     })
 

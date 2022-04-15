@@ -8,6 +8,7 @@ export class CreatePostController {
   async handle(request: Request, response: Response){
 
     const { name, peso, idade } = request.body;
+    const { id } = request.params
     const image = request?.file?.filename;
 
     const createPostUseCase = new CreatePostUseCase();
@@ -16,7 +17,8 @@ export class CreatePostController {
       name,
       peso,
       idade,
-      image: `${process.env.APP_URL}/files/${image}`
+      image: `${process.env.APP_URL}/files/${image}`,
+      author: id
     })
 
     return response.json(post)
