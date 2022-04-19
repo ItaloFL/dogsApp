@@ -3,7 +3,7 @@ import { verify } from "jsonwebtoken";
 import { AppError } from "../infra/errors/AppError";
 
 type TokenPayLoad = {
-  id: string
+  sub: string
 }
 
 export async function ensureAuthenticateUser(request: Request, response: Response, next: NextFunction) {
@@ -18,10 +18,10 @@ export async function ensureAuthenticateUser(request: Request, response: Respons
   try {
     const data = verify(token, "1cc19f80190295f1af7c6a36543bc8e5");
 
-    const { id } = data as TokenPayLoad;
+    const { sub: user_id } = data as TokenPayLoad;
 
     request.user = {
-      id
+      id: user_id
     }
 
     next()
