@@ -15,9 +15,9 @@ const getPhotoPostController = new GetPhotoPostController()
 const createComentPostController = new CreateComentPostController()
 const storage = multer(multerConfig)
 
-postRoutes.post('/createPost/:id', ensureAuthenticateUser, storage.single('image'),  createPostController.handle)
+postRoutes.post('/createPost', ensureAuthenticateUser, storage.single('image'),  createPostController.handle)
 postRoutes.get('/post', listPostController.handle)
 postRoutes.get('/photo/:id', getPhotoPostController.handle)
-postRoutes.post('/coment/:author', createComentPostController.handle)
+postRoutes.post('/coment', ensureAuthenticateUser, createComentPostController.handle)
 
 export { postRoutes }

@@ -1,4 +1,4 @@
-import { client } from "../../../../database/prisma/Client"
+import { client } from '../../../../database/prisma/Client'
 
 type PostRequest = {
   name: string
@@ -10,17 +10,25 @@ type PostRequest = {
 
 export class CreatePostUseCase {
   async execute({ name, peso, idade, image, author }: PostRequest) {
-
     const post = await client.post.create({
       data: {
         name,
-        peso, 
+        peso,
         idade,
         image,
         author
+      },
+      select: {
+        id: true,
+        name: true,
+        peso: true,
+        idade: true,
+        image: true,
+        author: true,
+        Coments: true
       }
     })
 
-    return post;
+    return post
   }
 }
