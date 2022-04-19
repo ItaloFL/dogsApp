@@ -29,7 +29,7 @@ model Post {
   image       String?
   user        User     @relation(fields: [author], references: [id])
   author      String
-  coments     Coments? @relation(name: "MEUDEUS", fields: [postComents], references: [id])
+  coments     Coments? @relation(name: "MEUDEUS", fields: [postComents], references: [id], onDelete: Cascade)
   postComents String?
 
   Coments Coments[] @relation(name: "PostComent")
@@ -40,8 +40,8 @@ model Coments {
   id         String   @id @default(uuid())
   user       User     @relation(fields: [author], references: [id])
   author     String
-  post       Post     @relation(name: "PostComent", fields: [postId], references: [id])
-  postId     String   @unique
+  post       Post     @relation(name: "PostComent", fields: [postId], references: [id], onDelete: Cascade)
+  postId     String
   coment     String
   created_at DateTime @default(now())
 
