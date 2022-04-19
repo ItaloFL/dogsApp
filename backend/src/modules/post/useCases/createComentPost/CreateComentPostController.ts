@@ -5,7 +5,7 @@ export class CreateComentPostController {
   async handle(request: Request, response: Response) {
 
     const { postId, coment } = request.body;
-    const { author } = request.params;
+    const { id: author } = request.user;
 
     const createComentPostUseCase = new CreateComentPostUseCase();
 

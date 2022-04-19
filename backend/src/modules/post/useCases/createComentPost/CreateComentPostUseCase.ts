@@ -20,9 +20,9 @@ export class CreateComentPostUseCase {
     const Postcoment = await client.coments.create({
       data: {
         postId,
-        coment,
-        author
-      }
+        author,
+        coment
+      },
     })
 
     return Postcoment
