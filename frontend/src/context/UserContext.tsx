@@ -9,7 +9,8 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { GET_USER, LOGIN_USER } from '../services/api'
 
-type UserType = {
+export type UserType = {
+  id?: string
   name: string
   email: string
 }

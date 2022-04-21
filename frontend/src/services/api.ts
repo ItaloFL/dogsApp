@@ -56,7 +56,7 @@ export function PHOTOS_GET() {
     url: baseURL + '/post',
     options: {
       method: 'GET',
-      cache: 'no-store',
+      cache: 'no-store'
     }
   }
 }
@@ -66,8 +66,21 @@ export function PHOTO_GET(id: string) {
     url: baseURL + `/photo/${id}`,
     options: {
       method: 'GET',
-      cache: 'no-store',
+      cache: 'no-store'
     }
   }
 }
 
+export function COMMENT_POST(postId: string, body: object) {
+  return {
+    url: baseURL + `/coment/${postId}`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      },
+      body: JSON.stringify(body)
+    }
+  }
+}
