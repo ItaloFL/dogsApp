@@ -23,6 +23,28 @@ export class CreateComentPostUseCase {
         author,
         coment
       },
+      select: {
+        id: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          }
+        },
+        post: {
+          select: {
+            id: true,
+            name: true,
+            peso: true,
+            idade: true,
+            image: true,
+            author: true,
+            Coments: true
+          }
+        },
+        coment: true
+      }
     })
 
     return Postcoment

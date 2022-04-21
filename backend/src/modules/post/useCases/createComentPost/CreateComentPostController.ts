@@ -4,7 +4,8 @@ import { CreateComentPostUseCase } from './CreateComentPostUseCase';
 export class CreateComentPostController {
   async handle(request: Request, response: Response) {
 
-    const { postId, coment } = request.body;
+    const { coment } = request.body;
+    const { postId } = request.params;
     const { id: author } = request.user;
 
     const createComentPostUseCase = new CreateComentPostUseCase();
