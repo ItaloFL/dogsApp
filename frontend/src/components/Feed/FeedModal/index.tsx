@@ -2,7 +2,8 @@ import React, { MouseEvent, MouseEventHandler, useEffect } from 'react'
 import { useFetch } from '../../../hooks/useFetch'
 import { PHOTO_GET } from '../../../services/api'
 import { Error } from '../../Helper'
-import { Loading } from '../../Helper/Loading'
+import { Loading } from '../../Helper/Loading/Loading'
+
 import { PhotoContent } from '../../Photo/PhotoContent'
 import { ModalWrapper } from './style'
 
