@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext, UserType } from '../../../context/UserContext'
+import { Image } from '../../Helper/Image/Image'
 import { PhotoComents, PostType } from '../PhotoComents'
 import { PhotoDelete } from '../PhotoDelete'
 import {
@@ -39,7 +40,7 @@ export const PhotoContent = ({ data }: DataType) => {
   return (
     <PhotoContainer>
       <ImagePhoto>
-        <img src={data.image} />
+        <Image src={data.image} alt={data.name}/>
       </ImagePhoto>
       <PhotoDatails>
         <div>

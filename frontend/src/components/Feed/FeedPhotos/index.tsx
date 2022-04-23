@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { useFetch } from '../../../hooks/useFetch'
 import { PHOTOS_GET } from '../../../services/api'
 import { Error } from '../../Helper'
-import { Loading } from '../../Helper/Loading'
+import { Loading } from '../../Helper/Loading/Loading'
+
 import { FeedPhotosItem } from './FeedPhotosItem'
 import { FeedWrapper } from './style'
 

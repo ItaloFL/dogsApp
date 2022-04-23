@@ -84,3 +84,15 @@ export function COMMENT_POST(postId: string, body: object) {
     }
   }
 }
+
+export function DELETE_PHOTO(id: string) {
+  return {
+    url: baseURL + `/post/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      },
+    }
+  }
+}

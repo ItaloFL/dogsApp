@@ -1,3 +1,5 @@
+
+import { Image } from "../../../Helper/Image/Image"
 import { FeedItemWrapper } from "./style"
 
 
@@ -10,7 +12,7 @@ export const FeedPhotosItem = ({ photo, setModalPhoto }: any) => {
 
   return (
     <FeedItemWrapper onClick={handleClick}>
-      <img src={photo.image} alt={photo.name} />
+      <Image src={photo.image} alt={photo.name}/>
       <span>Corno</span>
     </FeedItemWrapper>
   )
