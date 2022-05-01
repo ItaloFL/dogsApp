@@ -1,5 +1,10 @@
 const baseURL = 'http://localhost:3333'
 
+type PaginationType = {
+  skip: number
+  take: number
+}
+
 export function LOGIN_USER(body: object) {
   return {
     url: baseURL + '/login',
@@ -51,12 +56,16 @@ export function PHOTO_POST(formData: FormData, token: string) {
   }
 }
 
-export function PHOTOS_GET() {
+export function PHOTOS_GET({ skip, take }: PaginationType) {
+  console.log(skip, take)
   return {
-    url: baseURL + '/post',
+    url: baseURL + `/post?skip=${skip}&take=${take}`,
     options: {
       method: 'GET',
-      cache: 'no-store'
+      cache: 'no-store',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      }
     }
   }
 }
@@ -92,7 +101,7 @@ export function DELETE_PHOTO(id: string) {
       method: 'DELETE',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
-      },
+      }
     }
   }
 }
