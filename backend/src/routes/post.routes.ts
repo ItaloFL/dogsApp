@@ -18,7 +18,7 @@ const deletePhotoController = new DeletePhotoController()
 const storage = multer(multerConfig)
 
 postRoutes.post('/createPost', ensureAuthenticateUser, storage.single('image'),  createPostController.handle)
-postRoutes.get('/post', listPostController.handle)
+postRoutes.get('/post', ensureAuthenticateUser, listPostController.handle)
 postRoutes.get('/photo/:id', getPhotoPostController.handle)
 postRoutes.post('/coment/:postId', ensureAuthenticateUser, createComentPostController.handle)
 postRoutes.delete('/post/:id', ensureAuthenticateUser, deletePhotoController.handle)
