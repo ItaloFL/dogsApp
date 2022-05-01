@@ -15,24 +15,37 @@ export type PhotoType = {
   image: string
 }
 
-export const FeedPhotos = ({setModalPhoto}: any) => {
+export type FeedPhotoType = {
+  setModalPhoto: React.Dispatch<React.SetStateAction<null>>
+  skip: number
+  setInfinite: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const FeedPhotos = ({ setModalPhoto, skip, setInfinite }: FeedPhotoType) => {
   const { data, loading, error, request } = useFetch([])
 
   useEffect(() => {
     async function fetchPhotos() {
-      const { url, options } = PHOTOS_GET()
+      const total = 3;
+      const { url, options } = PHOTOS_GET({ skip, take: 3 })
       const { response, json } = await request(url, options)
+      if(response && response.ok && json.length < total) setInfinite(false)
+      console.log(json)
     }
     fetchPhotos()
-  }, [request])
+  }, [request, skip, setInfinite])
 
   if (error) return <Error error={error} />
   if (loading) return <Loading />
   if (data)
     return (
-      <FeedWrapper className='animeLeft'>
+      <FeedWrapper className="animeLeft">
         {data?.map((photo: PhotoType) => (
-          <FeedPhotosItem key={photo.id} photo={photo} setModalPhoto={setModalPhoto} />
+          <FeedPhotosItem
+            key={photo.id}
+            photo={photo}
+            setModalPhoto={setModalPhoto}
+          />
         ))}
       </FeedWrapper>
     )
